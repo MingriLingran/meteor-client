@@ -1,4 +1,13 @@
 /*
+ * @Author: LinRan me@ranawa.com
+ * @Date: 2024-06-06 15:26:30
+ * @LastEditors: LinRan me@ranawa.com
+ * @LastEditTime: 2024-06-10 11:04:37
+ * @FilePath: \meteor-client\src\main\java\meteordevelopment\meteorclient\systems\modules\render\StorageESP.java
+ * 
+ * Copyright (c) 2024 by $LinRan, All Rights Reserved. 
+ */
+/*
  * This file is part of the Meteor Client distribution (https://github.com/MeteorDevelopment/meteor-client).
  * Copyright (c) Meteor Development.
  */
@@ -39,40 +48,40 @@ import java.util.List;
 
 public class StorageESP extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
-    private final SettingGroup sgOpened = settings.createGroup("Opened Rendering");
+    private final SettingGroup sgOpened = settings.createGroup("打开的渲染");
     private final Set<BlockPos> interactedBlocks = new HashSet<>();
 
-    public final Setting<Mode> mode = sgGeneral.add(new EnumSetting.Builder<Mode>()
-        .name("mode")
-        .description("Rendering mode.")
+public final Setting<Mode> mode = sgGeneral.add(new EnumSetting.Builder<Mode>()
+        .name("模式")
+        .description("渲染模式")
         .defaultValue(Mode.Shader)
         .build()
     );
 
     private final Setting<List<BlockEntityType<?>>> storageBlocks = sgGeneral.add(new StorageBlockListSetting.Builder()
-        .name("storage-blocks")
-        .description("Select the storage blocks to display.")
+        .name("存储块")
+        .description("选择要显示的存储块。")
         .defaultValue(StorageBlockListSetting.STORAGE_BLOCKS)
         .build()
     );
 
     private final Setting<Boolean> tracers = sgGeneral.add(new BoolSetting.Builder()
-        .name("tracers")
-        .description("Draws tracers to storage blocks.")
+        .name("追踪器")
+        .description("在存储块上绘制追踪器。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<ShapeMode> shapeMode = sgGeneral.add(new EnumSetting.Builder<ShapeMode>()
-        .name("shape-mode")
-        .description("How the shapes are rendered.")
+        .name("形状模式")
+        .description("形状的渲染方式。")
         .defaultValue(ShapeMode.Both)
         .build()
     );
 
     public final Setting<Integer> fillOpacity = sgGeneral.add(new IntSetting.Builder()
-        .name("fill-opacity")
-        .description("The opacity of the shape fill.")
+        .name("填充不透明度")
+        .description("形状填充的不透明度。")
         .visible(() -> shapeMode.get() != ShapeMode.Lines)
         .defaultValue(50)
         .range(0, 255)
@@ -81,8 +90,8 @@ public class StorageESP extends Module {
     );
 
     public final Setting<Integer> outlineWidth = sgGeneral.add(new IntSetting.Builder()
-        .name("width")
-        .description("The width of the shader outline.")
+        .name("轮廓宽度")
+        .description("Shader轮廓的宽度。")
         .visible(() -> mode.get() == Mode.Shader)
         .defaultValue(1)
         .range(1, 10)
@@ -91,8 +100,8 @@ public class StorageESP extends Module {
     );
 
     public final Setting<Double> glowMultiplier = sgGeneral.add(new DoubleSetting.Builder()
-        .name("glow-multiplier")
-        .description("Multiplier for glow effect")
+        .name("发光乘数")
+        .description("发光效果的乘数")
         .visible(() -> mode.get() == Mode.Shader)
         .decimalPlaces(3)
         .defaultValue(3.5)
@@ -101,51 +110,51 @@ public class StorageESP extends Module {
         .build()
     );
 
-    private final Setting<SettingColor> chest = sgGeneral.add(new ColorSetting.Builder()
-        .name("chest")
-        .description("The color of chests.")
+private final Setting<SettingColor> chest = sgGeneral.add(new ColorSetting.Builder()
+        .name("箱子")
+        .description("箱子的颜色。")
         .defaultValue(new SettingColor(255, 160, 0, 255))
         .build()
     );
 
     private final Setting<SettingColor> trappedChest = sgGeneral.add(new ColorSetting.Builder()
-        .name("trapped-chest")
-        .description("The color of trapped chests.")
+        .name("被围捕的箱子")
+        .description("被围捕的箱子的颜色。")
         .defaultValue(new SettingColor(255, 0, 0, 255))
         .build()
     );
 
     private final Setting<SettingColor> barrel = sgGeneral.add(new ColorSetting.Builder()
-        .name("barrel")
-        .description("The color of barrels.")
+        .name("油桶")
+        .description("油桶的颜色。")
         .defaultValue(new SettingColor(255, 160, 0, 255))
         .build()
     );
 
     private final Setting<SettingColor> shulker = sgGeneral.add(new ColorSetting.Builder()
-        .name("shulker")
-        .description("The color of Shulker Boxes.")
+        .name("Shulker")
+        .description("Shulker Box的颜色。")
         .defaultValue(new SettingColor(255, 160, 0, 255))
         .build()
     );
 
     private final Setting<SettingColor> enderChest = sgGeneral.add(new ColorSetting.Builder()
-        .name("ender-chest")
-        .description("The color of Ender Chests.")
+        .name("末界箱子")
+        .description("末界箱子的颜色。")
         .defaultValue(new SettingColor(120, 0, 255, 255))
         .build()
     );
 
     private final Setting<SettingColor> other = sgGeneral.add(new ColorSetting.Builder()
-        .name("other")
-        .description("The color of furnaces, dispenders, droppers and hoppers.")
+        .name("其他")
+        .description("熔炉、分发器、丢弃者和 hopper 的颜色。")
         .defaultValue(new SettingColor(140, 140, 140, 255))
         .build()
     );
 
     private final Setting<Double> fadeDistance = sgGeneral.add(new DoubleSetting.Builder()
-        .name("fade-distance")
-        .description("The distance at which the color will fade.")
+        .name("模糊距离")
+        .description("颜色模糊的距离。")
         .defaultValue(6)
         .min(0)
         .sliderMax(12)
@@ -153,15 +162,15 @@ public class StorageESP extends Module {
     );
 
     private final Setting<Boolean> hideOpened = sgOpened.add(new BoolSetting.Builder()
-        .name("hide-opened")
-        .description("Hides opened containers.")
+        .name("隐藏打开的")
+        .description("隐藏打开的容器。")
         .defaultValue(false)
         .build()
     );
 
     private final Setting<SettingColor> openedColor = sgOpened.add(new ColorSetting.Builder()
-        .name("opened-color")
-        .description("Optional setting to change colors of opened chests, as opposed to not rendering. Disabled at zero opacity.")
+        .name("打开颜色")
+        .description("打开容器的颜色设置，与不渲染相反。")
         .defaultValue(new SettingColor(203, 90, 203, 0)) /// TRANSPARENT BY DEFAULT.
         .build()
     );
@@ -175,8 +184,10 @@ public class StorageESP extends Module {
     private final Mesh mesh;
     private final MeshVertexConsumerProvider vertexConsumerProvider;
 
-    public StorageESP() {
-        super(Categories.Render, "storage-esp", "Renders all specified storage blocks.");
+public StorageESP() {
+        super(Categories.Render, "存储 ESP", "显示所有指定的存储块。");
+    }
+
 
         mesh = new ShaderMesh(Shaders.POS_COLOR, DrawMode.Triangles, Mesh.Attrib.Vec3, Mesh.Attrib.Color);
         vertexConsumerProvider = new MeshVertexConsumerProvider(mesh);

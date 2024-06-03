@@ -129,8 +129,8 @@ public class Ambience extends Module {
     );
 
     public final Setting<Boolean> customWaterColor = sgWorld.add(new BoolSetting.Builder()
-        .name("custom-water-color")
-        .description("Whether the water color should be changed.")
+        .name("自定义水颜色")
+        .description("是否应改变水的颜色。")
         .defaultValue(false)
         .onChanged(val -> reload())
         .build()
@@ -138,7 +138,7 @@ public class Ambience extends Module {
 
     public final Setting<SettingColor> waterColor = sgWorld.add(new ColorSetting.Builder()
         .name("water-color")
-        .description("The color of the water.")
+        .description("水的颜色")
         .defaultValue(new SettingColor(102, 0, 0))
         .visible(customWaterColor::get)
         .onChanged(val -> reload())
@@ -146,8 +146,8 @@ public class Ambience extends Module {
     );
 
     public final Setting<Boolean> customLavaColor = sgWorld.add(new BoolSetting.Builder()
-        .name("custom-lava-color")
-        .description("Whether the lava color should be changed.")
+        .name("自定义熔岩色")
+        .description("是否更改熔岩颜色。")
         .defaultValue(false)
         .onChanged(val -> reload())
         .build()
@@ -163,7 +163,7 @@ public class Ambience extends Module {
     );
 
     public Ambience() {
-        super(Categories.World, "ambience", "Change the color of various pieces of the environment.");
+        super(Categories.World, "调整环境渲染颜色", "改变环境中各种元素的颜色。");
     }
 
     @Override

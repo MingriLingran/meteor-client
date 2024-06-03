@@ -33,9 +33,9 @@ public class Xray extends Module {
 
     public static final List<Block> ORES = List.of(Blocks.COAL_ORE, Blocks.DEEPSLATE_COAL_ORE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE, Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE, Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.NETHER_GOLD_ORE, Blocks.NETHER_QUARTZ_ORE, Blocks.ANCIENT_DEBRIS);
 
-    private final Setting<List<Block>> blocks = sgGeneral.add(new BlockListSetting.Builder()
-        .name("whitelist")
-        .description("Which blocks to show x-rayed.")
+private final Setting<List<Block>> blocks = sgGeneral.add(new BlockListSetting.Builder()
+        .name("白名单")
+        .description("显示 x-ray 的方块。")
         .defaultValue(ORES)
         .onChanged(v -> {
             if (isActive()) mc.worldRenderer.reload();
@@ -44,8 +44,8 @@ public class Xray extends Module {
     );
 
     public final Setting<Integer> opacity = sgGeneral.add(new IntSetting.Builder()
-        .name("opacity")
-        .description("The opacity for all other blocks.")
+        .name("不透明度")
+        .description("其他方块的不透明度。")
         .defaultValue(25)
         .range(0, 255)
         .sliderMax(255)
@@ -56,8 +56,8 @@ public class Xray extends Module {
     );
 
     private final Setting<Boolean> exposedOnly = sgGeneral.add(new BoolSetting.Builder()
-        .name("exposed-only")
-        .description("Show only exposed ores.")
+        .name("仅显示暴露的")
+        .description("仅显示暴露的方块。")
         .defaultValue(false)
         .onChanged(onChanged -> {
             if (isActive()) mc.worldRenderer.reload();
@@ -65,7 +65,7 @@ public class Xray extends Module {
         .build());
 
     public Xray() {
-        super(Categories.Render, "xray", "Only renders specified blocks. Good for mining.");
+        super(Categories.Render, "xray", "仅显示指定的方块。适用于采矿。");
     }
 
     @Override
@@ -80,8 +80,9 @@ public class Xray extends Module {
 
     @Override
     public WWidget getWidget(GuiTheme theme) {
-        if (MixinPlugin.isSodiumPresent) return theme.label("Warning: Due to Sodium in use, opacity is overridden to 0.");
-        if (MixinPlugin.isIrisPresent && IrisApi.getInstance().isShaderPackInUse()) return theme.label("Warning: Due to shaders in use, opacity is overridden to 0.");
+        if (MixinPlugin.isSodiumPresent) return theme.label("警告：由于使用了Sodium插件，不透明度已被 overridden 为 0.");
+        if (MixinPlugin.isIrisPresent && IrisApi.getInstance().isShaderPackInUse()) return theme.label("警告：由于使用了Shader包，不透明度已被 overridden 为 0.");
+
 
         return null;
     }

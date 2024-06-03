@@ -14,9 +14,9 @@ import meteordevelopment.meteorclient.systems.modules.Module;
 public class UnfocusedCPU extends Module {
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
 
-    public final Setting<Integer> fps = sgGeneral.add(new IntSetting.Builder()
-        .name("target-fps")
-        .description("Target FPS to set as the limit when the window is not focused.")
+public final Setting<Integer> fps = sgGeneral.add(new IntSetting.Builder()
+        .name("目标FPS")
+        .description("当窗口非活动时设置的目标FPS。")
         .min(1)
         .defaultValue(1)
         .sliderRange(1, 20)
@@ -24,6 +24,7 @@ public class UnfocusedCPU extends Module {
     );
 
     public UnfocusedCPU() {
-        super(Categories.Render, "unfocused-cpu", "Limits FPS when your Minecraft window is not focused.");
+        super(Categories.Render, "unfocused-cpu", "限制非活动窗口的FPS。");
     }
+
 }

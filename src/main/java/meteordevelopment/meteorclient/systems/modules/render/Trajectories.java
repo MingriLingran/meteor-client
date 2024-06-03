@@ -39,38 +39,38 @@ public class Trajectories extends Module {
 
     // General
 
-    private final Setting<List<Item>> items = sgGeneral.add(new ItemListSetting.Builder()
-        .name("items")
-        .description("Items to display trajectories for.")
+private final Setting<List<Item>> items = sgGeneral.add(new ItemListSetting.Builder()
+        .name("物品")
+        .description("显示轨迹的物品。")
         .defaultValue(getDefaultItems())
         .filter(this::itemFilter)
         .build()
     );
 
     private final Setting<Boolean> otherPlayers = sgGeneral.add(new BoolSetting.Builder()
-        .name("other-players")
-        .description("Calculates trajectories for other players.")
+        .name("其他玩家")
+        .description("计算其他玩家的轨迹。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> firedProjectiles = sgGeneral.add(new BoolSetting.Builder()
-        .name("fired-projectiles")
-        .description("Calculates trajectories for already fired projectiles.")
+        .name("已发射的物品")
+        .description("计算已经发射的物品的轨迹。")
         .defaultValue(false)
         .build()
     );
 
     private final Setting<Boolean> accurate = sgGeneral.add(new BoolSetting.Builder()
-        .name("accurate")
-        .description("Whether or not to calculate more accurate.")
+        .name("准确")
+        .description("是否计算更准确的轨迹。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Integer> simulationSteps = sgGeneral.add(new IntSetting.Builder()
-        .name("simulation-steps")
-        .description("How many steps to simulate projectiles. Zero for no limit")
+        .name("模拟步骤")
+        .description("模拟项目物的步数。0表示没有限制。")
         .defaultValue(500)
         .sliderMax(5000)
         .build()
@@ -79,22 +79,22 @@ public class Trajectories extends Module {
     // Render
 
     private final Setting<ShapeMode> shapeMode = sgRender.add(new EnumSetting.Builder<ShapeMode>()
-        .name("shape-mode")
-        .description("How the shapes are rendered.")
+        .name("形状模式")
+        .description("形状如何渲染。")
         .defaultValue(ShapeMode.Both)
         .build()
     );
 
     private final Setting<SettingColor> sideColor = sgRender.add(new ColorSetting.Builder()
-        .name("side-color")
-        .description("The side color.")
+        .name("侧边颜色")
+        .description("侧边颜色。")
         .defaultValue(new SettingColor(255, 150, 0, 35))
         .build()
     );
 
     private final Setting<SettingColor> lineColor = sgRender.add(new ColorSetting.Builder()
-        .name("line-color")
-        .description("The line color.")
+        .name("线条颜色")
+        .description("线条颜色。")
         .defaultValue(new SettingColor(255, 150, 0))
         .build()
     );
@@ -104,11 +104,12 @@ public class Trajectories extends Module {
     private final Pool<Vector3d> vec3s = new Pool<>(Vector3d::new);
     private final List<Path> paths = new ArrayList<>();
 
-    private static final double MULTISHOT_OFFSET = Math.toRadians(10); // accurate-ish offset of crossbow multishot in radians (10° degrees)
+    private static final double MULTISHOT_OFFSET = Math.toRadians(10); // 准确crossbow multishot的偏移量（10°）
 
     public Trajectories() {
-        super(Categories.Render, "trajectories", "Predicts the trajectory of throwable items.");
+        super(Categories.Render, "投掷轨迹", "预测可投掷物品的轨迹。");
     }
+
 
     private boolean itemFilter(Item item) {
         return item instanceof BowItem || item instanceof CrossbowItem || item instanceof FishingRodItem || item instanceof TridentItem || item instanceof SnowballItem || item instanceof EggItem || item instanceof EnderPearlItem || item instanceof ExperienceBottleItem || item instanceof ThrowablePotionItem;

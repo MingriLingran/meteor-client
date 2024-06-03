@@ -22,23 +22,24 @@ import java.util.List;
 public class Trail extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-    private final Setting<List<ParticleType<?>>> particles = sgGeneral.add(new ParticleTypeListSetting.Builder()
-        .name("particles")
-        .description("Particles to draw.")
+private final Setting<List<ParticleType<?>>> particles = sgGeneral.add(new ParticleTypeListSetting.Builder()
+        .name("粒子")
+        .description("要绘制的粒子。")
         .defaultValue(ParticleTypes.DRIPPING_OBSIDIAN_TEAR, ParticleTypes.CAMPFIRE_COSY_SMOKE)
         .build()
     );
 
     private final Setting<Boolean> pause = sgGeneral.add(new BoolSetting.Builder()
-        .name("pause-when-stationary")
-        .description("Whether or not to add particles when you are not moving.")
+        .name("暂停")
+        .description("当您不移动时是否添加粒子。")
         .defaultValue(true)
         .build()
     );
 
     public Trail() {
-        super(Categories.Render, "trail", "Renders a customizable trail behind your player.");
+        super(Categories.Render, "玩家轨迹", "在玩家后面绘制自定义轨迹。");
     }
+
 
     @EventHandler
     private void onTick(TickEvent.Post event) {

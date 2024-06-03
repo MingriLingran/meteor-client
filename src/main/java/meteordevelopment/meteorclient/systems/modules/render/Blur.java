@@ -49,9 +49,9 @@ public class Blur extends Module {
     };
 
     // General
-    private final Setting<Integer> strength = sgGeneral.add(new IntSetting.Builder()
-        .name("strength")
-        .description("How strong the blur should be.")
+private final Setting<Integer> strength = sgGeneral.add(new IntSetting.Builder()
+        .name("强度")
+        .description("模糊效果的强度。")
         .defaultValue(5)
         .min(1)
         .max(20)
@@ -60,8 +60,8 @@ public class Blur extends Module {
     );
 
     private final Setting<Integer> fadeTime = sgGeneral.add(new IntSetting.Builder()
-        .name("fade-time")
-        .description("How long the fade will last in milliseconds.")
+        .name("淡出时间")
+        .description("淡出效果持续的时间（以毫秒为单位）。")
         .defaultValue(100)
         .min(0)
         .sliderMax(500)
@@ -72,27 +72,27 @@ public class Blur extends Module {
 
     private final Setting<Boolean> meteor = sgScreens.add(new BoolSetting.Builder()
         .name("meteor")
-        .description("Applies blur to Meteor screens.")
+        .description("在流星屏幕上应用模糊效果。")
         .defaultValue(true)
         .build());
 
     private final Setting<Boolean> inventories = sgScreens.add(new BoolSetting.Builder()
         .name("inventories")
-        .description("Applies blur to inventory screens.")
+        .description("在库存屏幕上应用模糊效果。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> chat = sgScreens.add(new BoolSetting.Builder()
         .name("chat")
-        .description("Applies blur when in chat.")
+        .description("在聊天时应用模糊效果。")
         .defaultValue(false)
         .build()
     );
 
     private final Setting<Boolean> other = sgScreens.add(new BoolSetting.Builder()
         .name("other")
-        .description("Applies blur to all other screen types.")
+        .description("在所有其他屏幕类型上应用模糊效果。")
         .defaultValue(true)
         .build()
     );

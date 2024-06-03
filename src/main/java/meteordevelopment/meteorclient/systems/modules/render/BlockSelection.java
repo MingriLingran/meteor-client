@@ -22,50 +22,50 @@ import net.minecraft.util.shape.VoxelShape;
 public class BlockSelection extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-    private final Setting<Boolean> advanced = sgGeneral.add(new BoolSetting.Builder()
-        .name("advanced")
-        .description("Shows a more advanced outline on different types of shape blocks.")
+private final Setting<Boolean> advanced = sgGeneral.add(new BoolSetting.Builder()
+        .name("高级")
+        .description("在不同的形状块上显示更高级的轮廓。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> oneSide = sgGeneral.add(new BoolSetting.Builder()
-        .name("single-side")
-        .description("Only renders the side you are looking at.")
+        .name("单面")
+        .description("仅渲染你正在查看的表面。")
         .defaultValue(false)
         .build()
     );
 
     private final Setting<ShapeMode> shapeMode = sgGeneral.add(new EnumSetting.Builder<ShapeMode>()
-        .name("shape-mode")
-        .description("How the shapes are rendered.")
+        .name("形状模式")
+        .description("形状如何渲染。")
         .defaultValue(ShapeMode.Both)
         .build()
     );
 
     private final Setting<SettingColor> sideColor = sgGeneral.add(new ColorSetting.Builder()
-        .name("side-color")
-        .description("The side color.")
+        .name("侧边颜色")
+        .description("侧边颜色。")
         .defaultValue(new SettingColor(255, 255, 255, 50))
         .build()
     );
 
     private final Setting<SettingColor> lineColor = sgGeneral.add(new ColorSetting.Builder()
-        .name("line-color")
-        .description("The line color.")
+        .name("线条颜色")
+        .description("线条颜色。")
         .defaultValue(new SettingColor(255, 255, 255, 255))
         .build()
     );
 
     private final Setting<Boolean> hideInside = sgGeneral.add(new BoolSetting.Builder()
-        .name("hide-when-inside-block")
-        .description("Hide selection when inside target block.")
+        .name("内部隐藏")
+        .description("在目标方块内部隐藏选择。")
         .defaultValue(true)
         .build()
     );
 
     public BlockSelection() {
-        super(Categories.Render, "block-selection", "Modifies how your block selection is rendered.");
+        super(Categories.Render, "block-selection", "修改你的方块选择如何渲染。");
     }
 
     @EventHandler

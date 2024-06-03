@@ -55,40 +55,40 @@ public class BetterTooltips extends Module {
 
     // General
 
-    private final Setting<DisplayWhen> displayWhen = sgGeneral.add(new EnumSetting.Builder<DisplayWhen>()
-        .name("display-when")
-        .description("When to display previews.")
+private final Setting<DisplayWhen> displayWhen = sgGeneral.add(new EnumSetting.Builder<DisplayWhen>()
+        .name("显示时机")
+        .description("何时显示预览。")
         .defaultValue(DisplayWhen.Keybind)
         .build()
     );
 
     private final Setting<Keybind> keybind = sgGeneral.add(new KeybindSetting.Builder()
-        .name("keybind")
-        .description("The bind for keybind mode.")
+        .name("快捷键")
+        .description("键绑定模式时的绑定键。")
         .defaultValue(Keybind.fromKey(GLFW_KEY_LEFT_ALT))
         .visible(() -> displayWhen.get() == DisplayWhen.Keybind)
         .build()
     );
 
     private final Setting<Boolean> middleClickOpen = sgGeneral.add(new BoolSetting.Builder()
-        .name("middle-click-open")
-        .description("Opens a GUI window with the inventory of the storage block or book when you middle click the item.")
+        .name("中间点击打开")
+        .description("在Storage Block或Book上点击中间键时打开GUI窗口。")
         .defaultValue(true)
         .build()
     );
 
     // Previews
 
-    private final Setting<Boolean> shulkers = sgPreviews.add(new BoolSetting.Builder()
-        .name("containers")
-        .description("Shows a preview of a containers when hovering over it in an inventory.")
+private final Setting<Boolean> shulkers = sgPreviews.add(new BoolSetting.Builder()
+        .name("容器预览")
+        .description("在 Inventory 中悬停时显示容器预览。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> shulkerCompactTooltip = sgPreviews.add(new BoolSetting.Builder()
-        .name("compact-shulker-tooltip")
-        .description("Compacts the lines of the shulker tooltip.")
+        .name("紧凑的 Shulker 工具提示")
+        .description("使 Shulker 工具提示中的行 compact。")
         .defaultValue(true)
         .visible(shulkers::get)
         .build()
@@ -96,21 +96,21 @@ public class BetterTooltips extends Module {
 
     public final Setting<Boolean> echest = sgPreviews.add(new BoolSetting.Builder()
         .name("echests")
-        .description("Shows a preview of your echest when hovering over it in an inventory.")
+        .description("在 Inventory 中悬停时显示 echest 预览。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> maps = sgPreviews.add(new BoolSetting.Builder()
-        .name("maps")
-        .description("Shows a preview of a map when hovering over it in an inventory.")
+        .name("地图预览")
+        .description("在 Inventory 中悬停时显示地图预览。")
         .defaultValue(true)
         .build()
     );
 
     public final Setting<Double> mapsScale = sgPreviews.add(new DoubleSetting.Builder()
-        .name("map-scale")
-        .description("The scale of the map preview.")
+        .name("地图缩放")
+        .description("地图预览的缩放比例。")
         .defaultValue(1)
         .min(0.001)
         .sliderMax(1)
@@ -119,116 +119,116 @@ public class BetterTooltips extends Module {
     );
 
     private final Setting<Boolean> books = sgPreviews.add(new BoolSetting.Builder()
-        .name("books")
-        .description("Shows contents of a book when hovering over it in an inventory.")
+        .name("书籍内容")
+        .description("在 Inventory 中悬停时显示书籍内容。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> banners = sgPreviews.add(new BoolSetting.Builder()
-        .name("banners")
-        .description("Shows banners' patterns when hovering over it in an inventory. Also works with shields.")
+        .name("旗帜图案")
+        .description("在 Inventory 中悬停时显示旗帜图案。同样适用于盾牌。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> entitiesInBuckets = sgPreviews.add(new BoolSetting.Builder()
-        .name("entities-in-buckets")
-        .description("Shows entities in buckets when hovering over it in an inventory.")
+        .name("桶中的实体")
+        .description("在 Inventory 中悬停时显示桶中的实体。")
         .defaultValue(true)
         .build()
     );
 
     // Extras
 
-    public final Setting<Boolean> byteSize = sgOther.add(new BoolSetting.Builder()
-        .name("byte-size")
-        .description("Displays an item's size in bytes in the tooltip.")
+public final Setting<Boolean> byteSize = sgOther.add(new BoolSetting.Builder()
+        .name("字节大小")
+        .description("在工具提示中显示物品的大小（以字节为单位）。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> statusEffects = sgOther.add(new BoolSetting.Builder()
-        .name("status-effects")
-        .description("Adds list of status effects to tooltips of food items.")
+        .name("状态效果")
+        .description("在食物物品的工具提示中添加状态效果列表。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> beehive = sgOther.add(new BoolSetting.Builder()
-        .name("beehive")
-        .description("Displays information about a beehive or bee nest.")
+        .name("蜂箱或蜂巢信息")
+        .description("在蜂箱或蜂巢的工具提示中显示信息。")
         .defaultValue(true)
         .build()
     );
 
     //Hide flags
 
-    public final Setting<Boolean> tooltip = sgHideFlags.add(new BoolSetting.Builder()
-        .name("tooltip")
-        .description("Show the tooltip when it's hidden.")
+public final Setting<Boolean> tooltip = sgHideFlags.add(new BoolSetting.Builder()
+        .name("工具提示")
+        .description("显示隐藏时显示的工具提示。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> enchantments = sgHideFlags.add(new BoolSetting.Builder()
-        .name("enchantments")
-        .description("Show enchantments when it's hidden.")
+        .name("附魔")
+        .description("显示隐藏时显示的附魔。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> modifiers = sgHideFlags.add(new BoolSetting.Builder()
-        .name("modifiers")
-        .description("Show item modifiers when it's hidden.")
+        .name("修饰符")
+        .description("显示隐藏时显示的物品修饰符。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> unbreakable = sgHideFlags.add(new BoolSetting.Builder()
-        .name("unbreakable")
-        .description("Show \"Unbreakable\" tag when it's hidden.")
+        .name("不可破坏")
+        .description("显示隐藏时显示的“不可破坏”标签。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> canDestroy = sgHideFlags.add(new BoolSetting.Builder()
-        .name("can-destroy")
-        .description("Show \"CanDestroy\" tag when it's hidden.")
+        .name("可以破坏")
+        .description("显示隐藏时显示的“可以破坏”标签。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> canPlaceOn = sgHideFlags.add(new BoolSetting.Builder()
-        .name("can-place-on")
-        .description("Show \"CanPlaceOn\" tag when it's hidden.")
+        .name("可以放在上")
+        .description("显示隐藏时显示的“可以放在上”标签。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> additional = sgHideFlags.add(new BoolSetting.Builder()
-        .name("additional")
-        .description("Show potion effects, firework status, book author, etc when it's hidden.")
+        .name("额外")
+        .description("显示隐藏时显示的额外标签，如药水效果、烟花状态、书作者等。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> dye = sgHideFlags.add(new BoolSetting.Builder()
-        .name("dye")
-        .description("Show dyed item tags when it's hidden.")
+        .name("染色")
+        .description("显示隐藏时显示的染色物品标签。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> upgrades = sgHideFlags.add(new BoolSetting.Builder()
-        .name("armor-trim")
-        .description("Show armor trims when it's hidden.")
+        .name("装备边缘")
+        .description("显示隐藏时显示的装备边缘标签。")
         .defaultValue(false)
         .build()
     );
 
     public BetterTooltips() {
-        super(Categories.Render, "better-tooltips", "Displays more useful tooltips for certain items.");
+        super(Categories.Render, "better-tooltips", "在某些物品上显示更实用的工具提示。");
     }
 
     @EventHandler

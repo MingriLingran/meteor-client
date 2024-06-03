@@ -18,19 +18,20 @@ import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 public class TimeChanger extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-    private final Setting<Double> time = sgGeneral.add(new DoubleSetting.Builder()
-        .name("time")
-        .description("The specified time to be set.")
+private final Setting<Double> time = sgGeneral.add(new DoubleSetting.Builder()
+        .name("时间")
+        .description("指定的时间设置。")
         .defaultValue(0)
         .sliderRange(-20000, 20000)
         .build()
     );
 
-    long oldTime;
+    private long oldTime;
 
     public TimeChanger() {
-        super(Categories.Render, "time-changer", "Makes you able to set a custom time.");
+        super(Categories.Render, "时间更改器", "使您能够设置自定义时间(仅客户端)");
     }
+
 
     @Override
     public void onActivate() {

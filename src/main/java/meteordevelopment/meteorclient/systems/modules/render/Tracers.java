@@ -45,62 +45,62 @@ public class Tracers extends Module {
 
     // General
 
-    private final Setting<Set<EntityType<?>>> entities = sgGeneral.add(new EntityTypeListSetting.Builder()
-        .name("entities")
-        .description("Select specific entities.")
+private final Setting<Set<EntityType<?>>> entities = sgGeneral.add(new EntityTypeListSetting.Builder()
+        .name("实体")
+        .description("选择特定实体。")
         .defaultValue(EntityType.PLAYER)
         .build()
     );
 
     private final Setting<Boolean> ignoreSelf = sgGeneral.add(new BoolSetting.Builder()
-        .name("ignore-self")
-        .description("Doesn't draw tracers to yourself when in third person or freecam.")
+        .name("忽略自己")
+        .description("在第三人称或freecam时，不绘制自身轨迹。")
         .defaultValue(false)
         .build()
     );
 
-    public final Setting<Boolean> ignoreFriends = sgGeneral.add(new BoolSetting.Builder()
-        .name("ignore-friends")
-        .description("Doesn't draw tracers to friends.")
+    private final Setting<Boolean> ignoreFriends = sgGeneral.add(new BoolSetting.Builder()
+        .name("忽略好友")
+        .description("不绘制好友的轨迹。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> showInvis = sgGeneral.add(new BoolSetting.Builder()
-        .name("show-invisible")
-        .description("Shows invisible entities.")
+        .name("显示不可见")
+        .description("显示不可见的实体。")
         .defaultValue(true)
         .build()
     );
 
     // Appearance
 
-    private final Setting<TracerStyle> style = sgAppearance.add(new EnumSetting.Builder<TracerStyle>()
-        .name("style")
-        .description("What display mode should be used")
+private final Setting<TracerStyle> style = sgAppearance.add(new EnumSetting.Builder<TracerStyle>()
+        .name("样式")
+        .description("追踪器的显示模式")
         .defaultValue(TracerStyle.Lines)
         .build()
     );
 
     private final Setting<Target> target = sgAppearance.add(new EnumSetting.Builder<Target>()
-        .name("target")
-        .description("What part of the entity to target.")
+        .name("目标")
+        .description("追踪器目标部分")
         .defaultValue(Target.Body)
         .visible(() ->  style.get() == TracerStyle.Lines)
         .build()
     );
 
     private final Setting<Boolean> stem = sgAppearance.add(new BoolSetting.Builder()
-        .name("stem")
-        .description("Draw a line through the center of the tracer target.")
+        .name("干草")
+        .description("在追踪器目标中心绘制一条线")
         .defaultValue(true)
         .visible(() ->  style.get() == TracerStyle.Lines)
         .build()
     );
 
     private final Setting<Integer> maxDist = sgAppearance.add(new IntSetting.Builder()
-        .name("max-distance")
-        .description("Maximum distance for tracers to show.")
+        .name("最大距离")
+        .description("追踪器显示的最大距离")
         .defaultValue(256)
         .min(0)
         .sliderMax(256)
@@ -108,8 +108,8 @@ public class Tracers extends Module {
     );
 
     private final Setting<Integer> distanceOffscreen = sgAppearance.add(new IntSetting.Builder()
-        .name("distance-offscreen")
-        .description("Offscreen's distance from center.")
+        .name("离屏距离")
+        .description("离屏的距离")
         .defaultValue(200)
         .min(0)
         .sliderMax(500)
@@ -118,8 +118,8 @@ public class Tracers extends Module {
     );
 
     private final Setting<Integer> sizeOffscreen = sgAppearance.add(new IntSetting.Builder()
-        .name("size-offscreen")
-        .description("Offscreen's size.")
+        .name("离屏大小")
+        .description("离屏的大小")
         .defaultValue(10)
         .min(2)
         .sliderMax(50)
@@ -128,16 +128,16 @@ public class Tracers extends Module {
     );
 
     private final Setting<Boolean> blinkOffscreen = sgAppearance.add(new BoolSetting.Builder()
-        .name("blink-offscreen")
-        .description("Make offscreen Blink.")
+        .name("离屏闪烁")
+        .description("离屏闪烁")
         .defaultValue(true)
         .visible(() ->  style.get() == TracerStyle.Offscreen)
         .build()
     );
 
     private final Setting<Double> blinkOffscreenSpeed = sgAppearance.add(new DoubleSetting.Builder()
-        .name("blink-offscreen-speed")
-        .description("Offscreen's blink speed.")
+        .name("离屏闪烁速度")
+        .description("离屏的闪烁速度")
         .defaultValue(4)
         .min(1)
         .sliderMax(15)
@@ -147,64 +147,64 @@ public class Tracers extends Module {
 
     // Colors
 
-    public final Setting<Boolean> distance = sgColors.add(new BoolSetting.Builder()
-        .name("distance-colors")
-        .description("Changes the color of tracers depending on distance.")
+public final Setting<Boolean> distance = sgColors.add(new BoolSetting.Builder()
+        .name("距离颜色")
+        .description("根据距离改变粒子颜色。")
         .defaultValue(false)
         .build()
     );
 
     public final Setting<Boolean> friendOverride = sgColors.add(new BoolSetting.Builder()
-        .name("show-friend-colors")
-        .description("Whether or not to override the distance color of friends with the friend color.")
+        .name("好友颜色")
+        .description("是否覆盖距离颜色，以显示好友颜色。")
         .defaultValue(true)
-        .visible(() -> distance.get() && !ignoreFriends.get())
+        .visible(() -> distance.get())
         .build()
     );
 
     private final Setting<SettingColor> playersColor = sgColors.add(new ColorSetting.Builder()
-        .name("players-colors")
-        .description("The player's color.")
+        .name("玩家颜色")
+        .description("玩家颜色。")
         .defaultValue(new SettingColor(205, 205, 205, 127))
         .visible(() -> !distance.get())
         .build()
     );
 
     private final Setting<SettingColor> animalsColor = sgColors.add(new ColorSetting.Builder()
-        .name("animals-color")
-        .description("The animal's color.")
+        .name("动物颜色")
+        .description("动物颜色。")
         .defaultValue(new SettingColor(145, 255, 145, 127))
         .visible(() -> !distance.get())
         .build()
     );
 
     private final Setting<SettingColor> waterAnimalsColor = sgColors.add(new ColorSetting.Builder()
-        .name("water-animals-color")
-        .description("The water animal's color.")
+        .name("水生动物颜色")
+        .description("水生动物颜色。")
         .defaultValue(new SettingColor(145, 145, 255, 127))
         .visible(() -> !distance.get())
         .build()
     );
 
     private final Setting<SettingColor> monstersColor = sgColors.add(new ColorSetting.Builder()
-        .name("monsters-color")
-        .description("The monster's color.")
+        .name("怪物颜色")
+        .description("怪物颜色。")
         .defaultValue(new SettingColor(255, 145, 145, 127))
         .visible(() -> !distance.get())
         .build()
     );
 
     private final Setting<SettingColor> ambientColor = sgColors.add(new ColorSetting.Builder()
-        .name("ambient-color")
-        .description("The ambient color.")
+        .name("环境颜色")
+        .description("环境颜色。")
         .defaultValue(new SettingColor(75, 75, 75, 127))
         .visible(() -> !distance.get())
         .build()
     );
 
     private final Setting<SettingColor> miscColor = sgColors.add(new ColorSetting.Builder()
-        .name("misc-color")
-        .description("The misc color.")
+        .name("杂项颜色")
+        .description("杂项颜色。")
         .defaultValue(new SettingColor(145, 145, 145, 127))
         .visible(() -> !distance.get())
         .build()
@@ -214,7 +214,7 @@ public class Tracers extends Module {
     private Instant initTimer = Instant.now();
 
     public Tracers() {
-        super(Categories.Render, "tracers", "Displays tracer lines to specified entities.");
+        super(Categories.Render, "追踪器", "显示指定实体的追踪线。");
     }
 
     private boolean shouldBeIgnored(Entity entity) {

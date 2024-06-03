@@ -35,16 +35,16 @@ public class VoidESP extends Module {
 
     // General
 
-    private final Setting<Boolean> airOnly = sgGeneral.add(new BoolSetting.Builder()
-        .name("air-only")
-        .description("Checks bedrock only for air blocks.")
+private final Setting<Boolean> airOnly = sgGeneral.add(new BoolSetting.Builder()
+        .name("空气仅检查")
+        .description("仅检查基岩层内的空气块。")
         .defaultValue(false)
         .build()
     );
 
     private final Setting<Integer> horizontalRadius = sgGeneral.add(new IntSetting.Builder()
-        .name("horizontal-radius")
-        .description("Horizontal radius in which to search for holes.")
+        .name("水平半径")
+        .description("在搜索空洞时水平半径。")
         .defaultValue(64)
         .min(0)
         .sliderMax(256)
@@ -52,8 +52,8 @@ public class VoidESP extends Module {
     );
 
     private final Setting<Integer> holeHeight = sgGeneral.add(new IntSetting.Builder()
-        .name("hole-height")
-        .description("The minimum hole height to be rendered.")
+        .name("空洞高度")
+        .description("空洞渲染的最小高度。")
         .defaultValue(1)
         .min(1)
         .sliderRange(1, 5)
@@ -61,8 +61,8 @@ public class VoidESP extends Module {
     );
 
     private final Setting<Boolean> netherRoof = sgGeneral.add(new BoolSetting.Builder()
-        .name("nether-roof")
-        .description("Check for holes in nether roof.")
+        .name("地狱房顶")
+        .description("检查地狱房顶上的空洞。")
         .defaultValue(true)
         .build()
     );
@@ -70,22 +70,22 @@ public class VoidESP extends Module {
     // Render
 
     private final Setting<ShapeMode> shapeMode = sgRender.add(new EnumSetting.Builder<ShapeMode>()
-        .name("shape-mode")
-        .description("How the shapes are rendered.")
+        .name("形状模式")
+        .description("形状如何渲染。")
         .defaultValue(ShapeMode.Both)
         .build()
     );
 
     private final Setting<SettingColor> sideColor = sgRender.add(new ColorSetting.Builder()
-        .name("fill-color")
-        .description("The color that fills holes in the void.")
+        .name("填充颜色")
+        .description("填充空洞的底层颜色。")
         .defaultValue(new SettingColor(225, 25, 25, 50))
         .build()
     );
 
     private final Setting<SettingColor> lineColor = sgRender.add(new ColorSetting.Builder()
-        .name("line-color")
-        .description("The color to draw lines of holes to the void.")
+        .name("线条颜色")
+        .description("绘制空洞底层线条的颜色。")
         .defaultValue(new SettingColor(225, 25, 255))
         .build()
     );
@@ -96,7 +96,7 @@ public class VoidESP extends Module {
     private final List<Void> voidHoles = new ArrayList<>();
 
     public VoidESP() {
-        super(Categories.Render, "void-esp", "Renders holes in bedrock layers that lead to the void.");
+        super(Categories.Render, "void-esp", "在基岩层中渲染空洞，这些空洞指向地下。");
     }
 
     @EventHandler

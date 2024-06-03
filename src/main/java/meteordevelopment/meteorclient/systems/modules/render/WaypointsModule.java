@@ -48,9 +48,9 @@ public class WaypointsModule extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
     private final SettingGroup sgDeathPosition = settings.createGroup("Death Position");
 
-    public final Setting<Integer> textRenderDistance = sgGeneral.add(new IntSetting.Builder()
-        .name("text-render-distance")
-        .description("Maximum distance from the center of the screen at which text will be rendered.")
+public final Setting<Integer> textRenderDistance = sgGeneral.add(new IntSetting.Builder()
+        .name("文本渲染距离")
+        .description("屏幕中心到文本渲染的最大距离。")
         .defaultValue(100)
         .min(0)
         .sliderMax(200)
@@ -58,8 +58,8 @@ public class WaypointsModule extends Module {
     );
 
     private final Setting<Integer> maxDeathPositions = sgDeathPosition.add(new IntSetting.Builder()
-        .name("max-death-positions")
-        .description("The amount of death positions to save, 0 to disable")
+        .name("最大死亡位置")
+        .description("保存的死亡位置数量，0以禁用")
         .defaultValue(0)
         .min(0)
         .sliderMax(20)
@@ -68,14 +68,14 @@ public class WaypointsModule extends Module {
     );
 
     private final Setting<Boolean> dpChat = sgDeathPosition.add(new BoolSetting.Builder()
-        .name("chat")
-        .description("Send a chat message with your position once you die")
+        .name("聊天")
+        .description("在你死亡时发送包含你位置的聊天消息")
         .defaultValue(false)
         .build()
     );
 
     public WaypointsModule() {
-        super(Categories.Render, "waypoints", "Allows you to create waypoints.");
+        super(Categories.Render, "waypoints", "允许你创建路点。");
     }
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");

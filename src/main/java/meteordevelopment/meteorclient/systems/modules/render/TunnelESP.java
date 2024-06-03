@@ -1,4 +1,13 @@
 /*
+ * @Author: LinRan me@ranawa.com
+ * @Date: 2024-06-06 15:26:30
+ * @LastEditors: LinRan me@ranawa.com
+ * @LastEditTime: 2024-06-10 10:52:45
+ * @FilePath: \meteor-client\src\main\java\meteordevelopment\meteorclient\systems\modules\render\TunnelESP.java
+ * 
+ * Copyright (c) 2024 by $LinRan, All Rights Reserved. 
+ */
+/*
  * This file is part of the Meteor Client distribution (https://github.com/MeteorDevelopment/meteor-client).
  * Copyright (c) Meteor Development.
  */
@@ -40,38 +49,38 @@ public class TunnelESP extends Module {
 
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-    private final Setting<Double> height = sgGeneral.add(new DoubleSetting.Builder()
-        .name("height")
-        .description("Height of the rendered box.")
+private final Setting<Double> height = sgGeneral.add(new DoubleSetting.Builder()
+        .name("高度")
+        .description("渲染的盒子的高度。")
         .defaultValue(0.1)
         .sliderMax(2)
         .build()
     );
 
     private final Setting<Boolean> connected = sgGeneral.add(new BoolSetting.Builder()
-        .name("connected")
-        .description("If neighbouring holes should be connected.")
+        .name("连接")
+        .description("相邻空洞是否连接。")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<ShapeMode> shapeMode = sgGeneral.add(new EnumSetting.Builder<ShapeMode>()
-        .name("shape-mode")
-        .description("How the shapes are rendered.")
+        .name("形状模式")
+        .description("形状如何渲染。")
         .defaultValue(ShapeMode.Both)
         .build()
     );
 
     private final Setting<SettingColor> sideColor = sgGeneral.add(new ColorSetting.Builder()
-        .name("side-color")
-        .description("The side color.")
+        .name("侧边颜色")
+        .description("侧边颜色。")
         .defaultValue(new SettingColor(255, 175, 25, 50))
         .build()
     );
 
     private final Setting<SettingColor> lineColor = sgGeneral.add(new ColorSetting.Builder()
-        .name("line-color")
-        .description("The line color.")
+        .name("线条颜色")
+        .description("线条颜色。")
         .defaultValue(new SettingColor(255, 175, 25, 255))
         .build()
     );
@@ -79,7 +88,7 @@ public class TunnelESP extends Module {
     private final Long2ObjectMap<TChunk> chunks = new Long2ObjectOpenHashMap<>();
 
     public TunnelESP() {
-        super(Categories.Render, "tunnel-esp", "Highlights tunnels.");
+        super(Categories.Render, "tunnel-esp", "高亮隧道。");
     }
 
     @Override
