@@ -1,4 +1,3 @@
-
 <p align="center">
 <img src="https://meteorclient.com/icon.png" alt="meteor-client-logo" width="15%"/>
 </p>
@@ -18,6 +17,8 @@
 </div>
 
 ## Usage
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMingriLingran%2Fmeteor-client.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FMingriLingran%2Fmeteor-client?ref=badge_shield)
+
 
 ### Building
 - Clone this repository
@@ -58,3 +59,6 @@ If you use **ANY** code from the source:
 - Your application must also be licensed under the same license.
 
 *If you have any other questions, check our [FAQ](https://meteorclient.com/faq) or ask in our [Discord](https://meteorclient.com/discord) server.*
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMingriLingran%2Fmeteor-client.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMingriLingran%2Fmeteor-client?ref=badge_large)
