@@ -1,4 +1,13 @@
 /*
+ * @Author: LinRan me@ranawa.com
+ * @Date: 2024-06-06 15:26:30
+ * @LastEditors: LinRan me@ranawa.com
+ * @LastEditTime: 2024-06-10 14:03:15
+ * @FilePath: \meteor-client\src\main\java\meteordevelopment\meteorclient\systems\modules\render\UnfocusedCPU.java
+ * 
+ * Copyright (c) 2024 by $LinRan, All Rights Reserved. 
+ */
+/*
  * This file is part of the Meteor Client distribution (https://github.com/MeteorDevelopment/meteor-client).
  * Copyright (c) Meteor Development.
  */
@@ -14,7 +23,7 @@ import meteordevelopment.meteorclient.systems.modules.Module;
 public class UnfocusedCPU extends Module {
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
 
-public final Setting<Integer> fps = sgGeneral.add(new IntSetting.Builder()
+    public final Setting<Integer> fps = sgGeneral.add(new IntSetting.Builder()
         .name("目标FPS")
         .description("当窗口非活动时设置的目标FPS。")
         .min(1)

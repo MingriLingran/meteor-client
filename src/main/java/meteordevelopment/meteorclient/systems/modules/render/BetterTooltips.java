@@ -55,7 +55,7 @@ public class BetterTooltips extends Module {
 
     // General
 
-private final Setting<DisplayWhen> displayWhen = sgGeneral.add(new EnumSetting.Builder<DisplayWhen>()
+    private final Setting<DisplayWhen> displayWhen = sgGeneral.add(new EnumSetting.Builder<DisplayWhen>()
         .name("显示时机")
         .description("何时显示预览。")
         .defaultValue(DisplayWhen.Keybind)

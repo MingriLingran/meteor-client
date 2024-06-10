@@ -22,7 +22,7 @@ import net.minecraft.util.shape.VoxelShape;
 public class BlockSelection extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-private final Setting<Boolean> advanced = sgGeneral.add(new BoolSetting.Builder()
+    private final Setting<Boolean> advanced = sgGeneral.add(new BoolSetting.Builder()
         .name("高级")
         .description("在不同的形状块上显示更高级的轮廓。")
         .defaultValue(true)
