@@ -49,7 +49,7 @@ public class TunnelESP extends Module {
 
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-private final Setting<Double> height = sgGeneral.add(new DoubleSetting.Builder()
+    private final Setting<Double> height = sgGeneral.add(new DoubleSetting.Builder()
         .name("高度")
         .description("渲染的盒子的高度。")
         .defaultValue(0.1)

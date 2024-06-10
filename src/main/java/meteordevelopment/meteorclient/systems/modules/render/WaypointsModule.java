@@ -48,7 +48,7 @@ public class WaypointsModule extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
     private final SettingGroup sgDeathPosition = settings.createGroup("Death Position");
 
-public final Setting<Integer> textRenderDistance = sgGeneral.add(new IntSetting.Builder()
+    public final Setting<Integer> textRenderDistance = sgGeneral.add(new IntSetting.Builder()
         .name("文本渲染距离")
         .description("屏幕中心到文本渲染的最大距离。")
         .defaultValue(100)

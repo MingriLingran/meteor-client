@@ -45,7 +45,7 @@ public class Tracers extends Module {
 
     // General
 
-private final Setting<Set<EntityType<?>>> entities = sgGeneral.add(new EntityTypeListSetting.Builder()
+    private final Setting<Set<EntityType<?>>> entities = sgGeneral.add(new EntityTypeListSetting.Builder()
         .name("实体")
         .description("选择特定实体。")
         .defaultValue(EntityType.PLAYER)
@@ -75,7 +75,7 @@ private final Setting<Set<EntityType<?>>> entities = sgGeneral.add(new EntityTyp
 
     // Appearance
 
-private final Setting<TracerStyle> style = sgAppearance.add(new EnumSetting.Builder<TracerStyle>()
+    private final Setting<TracerStyle> style = sgAppearance.add(new EnumSetting.Builder<TracerStyle>()
         .name("样式")
         .description("追踪器的显示模式")
         .defaultValue(TracerStyle.Lines)
@@ -147,7 +147,7 @@ private final Setting<TracerStyle> style = sgAppearance.add(new EnumSetting.Buil
 
     // Colors
 
-public final Setting<Boolean> distance = sgColors.add(new BoolSetting.Builder()
+    public final Setting<Boolean> distance = sgColors.add(new BoolSetting.Builder()
         .name("距离颜色")
         .description("根据距离改变粒子颜色。")
         .defaultValue(false)

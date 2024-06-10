@@ -22,7 +22,7 @@ import java.util.List;
 public class Trail extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-private final Setting<List<ParticleType<?>>> particles = sgGeneral.add(new ParticleTypeListSetting.Builder()
+    private final Setting<List<ParticleType<?>>> particles = sgGeneral.add(new ParticleTypeListSetting.Builder()
         .name("粒子")
         .description("要绘制的粒子。")
         .defaultValue(ParticleTypes.DRIPPING_OBSIDIAN_TEAR, ParticleTypes.CAMPFIRE_COSY_SMOKE)

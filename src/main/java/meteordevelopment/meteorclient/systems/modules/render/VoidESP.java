@@ -35,7 +35,7 @@ public class VoidESP extends Module {
 
     // General
 
-private final Setting<Boolean> airOnly = sgGeneral.add(new BoolSetting.Builder()
+    private final Setting<Boolean> airOnly = sgGeneral.add(new BoolSetting.Builder()
         .name("空气仅检查")
         .description("仅检查基岩层内的空气块。")
         .defaultValue(false)

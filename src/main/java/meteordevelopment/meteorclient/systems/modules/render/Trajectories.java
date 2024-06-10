@@ -39,7 +39,7 @@ public class Trajectories extends Module {
 
     // General
 
-private final Setting<List<Item>> items = sgGeneral.add(new ItemListSetting.Builder()
+    private final Setting<List<Item>> items = sgGeneral.add(new ItemListSetting.Builder()
         .name("物品")
         .description("显示轨迹的物品。")
         .defaultValue(getDefaultItems())

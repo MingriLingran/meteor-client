@@ -51,7 +51,7 @@ public class StorageESP extends Module {
     private final SettingGroup sgOpened = settings.createGroup("打开的渲染");
     private final Set<BlockPos> interactedBlocks = new HashSet<>();
 
-public final Setting<Mode> mode = sgGeneral.add(new EnumSetting.Builder<Mode>()
+    public final Setting<Mode> mode = sgGeneral.add(new EnumSetting.Builder<Mode>()
         .name("模式")
         .description("渲染模式")
         .defaultValue(Mode.Shader)
@@ -110,7 +110,7 @@ public final Setting<Mode> mode = sgGeneral.add(new EnumSetting.Builder<Mode>()
         .build()
     );
 
-private final Setting<SettingColor> chest = sgGeneral.add(new ColorSetting.Builder()
+    private final Setting<SettingColor> chest = sgGeneral.add(new ColorSetting.Builder()
         .name("箱子")
         .description("箱子的颜色。")
         .defaultValue(new SettingColor(255, 160, 0, 255))

@@ -18,7 +18,7 @@ import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 public class TimeChanger extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-private final Setting<Double> time = sgGeneral.add(new DoubleSetting.Builder()
+    private final Setting<Double> time = sgGeneral.add(new DoubleSetting.Builder()
         .name("时间")
         .description("指定的时间设置。")
         .defaultValue(0)

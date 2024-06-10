@@ -49,7 +49,7 @@ public class Blur extends Module {
     };
 
     // General
-private final Setting<Integer> strength = sgGeneral.add(new IntSetting.Builder()
+    private final Setting<Integer> strength = sgGeneral.add(new IntSetting.Builder()
         .name("强度")
         .description("模糊效果的强度。")
         .defaultValue(5)

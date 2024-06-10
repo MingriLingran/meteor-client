@@ -79,7 +79,7 @@ private final Setting<DisplayWhen> displayWhen = sgGeneral.add(new EnumSetting.B
 
     // Previews
 
-private final Setting<Boolean> shulkers = sgPreviews.add(new BoolSetting.Builder()
+    private final Setting<Boolean> shulkers = sgPreviews.add(new BoolSetting.Builder()
         .name("容器预览")
         .description("在 Inventory 中悬停时显示容器预览。")
         .defaultValue(true)
@@ -141,7 +141,7 @@ private final Setting<Boolean> shulkers = sgPreviews.add(new BoolSetting.Builder
 
     // Extras
 
-public final Setting<Boolean> byteSize = sgOther.add(new BoolSetting.Builder()
+    public final Setting<Boolean> byteSize = sgOther.add(new BoolSetting.Builder()
         .name("字节大小")
         .description("在工具提示中显示物品的大小（以字节为单位）。")
         .defaultValue(true)
@@ -164,7 +164,7 @@ public final Setting<Boolean> byteSize = sgOther.add(new BoolSetting.Builder()
 
     //Hide flags
 
-public final Setting<Boolean> tooltip = sgHideFlags.add(new BoolSetting.Builder()
+    public final Setting<Boolean> tooltip = sgHideFlags.add(new BoolSetting.Builder()
         .name("工具提示")
         .description("显示隐藏时显示的工具提示。")
         .defaultValue(false)
